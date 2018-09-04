@@ -1,0 +1,172 @@
+/run/verbose 1
+/event/verbose 1
+/tracking/verbose 1
+
+# two beams in a generator
+#
+# beam #1
+#
+/gps/source/intensity 1.
+/gps/particle neutron
+#
+/gps/pos/type Point
+/gps/pos/centre 0.0 0.0 0.0 mm
+#
+/gps/ang/type iso
+#
+/gps/ene/type Arb
+/gps/hist/type arb
+#
+# The Cf-252 neutron energy spectrum was taken from
+# Figure 2 of A.B. Smith and  P.R. Fields, 
+# Phys Rev 104 (1957) 699.
+#
+#
+#                Energy (MeV)  Rel. Yield
+#
+/gps/hist/point	0.1411927416	0.6132493802
+/gps/hist/point	0.1462032708	0.7002404517
+/gps/hist/point	0.1737414014	0.8713875645
+/gps/hist/point	0.2060793548	1.0168024019
+/gps/hist/point	0.2317497124	1.1277866312
+/gps/hist/point	0.2804352080	1.3546164547
+/gps/hist/point	0.3889120654	1.1558132229
+/gps/hist/point	0.4346305069	1.0454612621
+/gps/hist/point	0.5041218393	0.9095645785
+/gps/hist/point	0.5585729024	0.8125277047
+/gps/hist/point	0.6265904342	0.7249919632
+/gps/hist/point	0.6828878221	0.6536380086
+/gps/hist/point	0.7498635226	0.5788921532
+/gps/hist/point	0.8294969887	0.5101478891
+/gps/hist/point	0.9111020803	0.4483207218
+/gps/hist/point	0.9654240547	0.4058273890
+/gps/hist/point	1.0228592376	0.3706984849
+/gps/hist/point	1.1106373699	0.3279500427
+/gps/hist/point	1.1734690884	0.2978786434
+/gps/hist/point	1.2260203538	0.2754055760
+/gps/hist/point	1.3013841171	0.2468615609
+/gps/hist/point	1.3854522016	0.2222440091
+/gps/hist/point	1.4624545550	0.1992998774
+/gps/hist/point	1.5404287431	0.1813685393
+/gps/hist/point	1.6056297334	0.1637290270
+/gps/hist/point	1.6617157857	0.1524820841
+/gps/hist/point	1.7417125815	0.1395093980
+/gps/hist/point	1.8231012979	0.1234365479
+/gps/hist/point	1.9147431405	0.1107348750
+/gps/hist/point	1.9982978279	0.0997593213
+/gps/hist/point	2.0658012743	0.0922691205
+/gps/hist/point	2.1407345086	0.0833765340
+/gps/hist/point	2.2092569264	0.0764472366
+/gps/hist/point	2.2849404330	0.0695706135
+/gps/hist/point	2.3583046475	0.0643187470
+/gps/hist/point	2.4329511023	0.0584332277
+/gps/hist/point	2.5122294997	0.0533424596
+/gps/hist/point	2.6206143864	0.0461596701
+/gps/hist/point	2.7202710534	0.0408292161
+/gps/hist/point	2.8005925106	0.0368277082
+/gps/hist/point	2.8772371828	0.0336021230
+/gps/hist/point	2.9633363121	0.0302693813
+/gps/hist/point	3.0494265242	0.0273475218
+/gps/hist/point	3.1355242663	0.0246464029
+/gps/hist/point	3.2216176490	0.0222440425
+/gps/hist/point	3.3026529629	0.0201557387
+/gps/hist/point	3.3836936271	0.0182312800
+/gps/hist/point	3.4697891895	0.0164423932
+/gps/hist/point	3.5609370740	0.0147982860
+/gps/hist/point	3.6520881290	0.0133046527
+/gps/hist/point	3.7432486957	0.0119242998
+/gps/hist/point	3.8344045066	0.0107039389
+/gps/hist/point	3.9255603175	0.0096084727
+/gps/hist/point	4.0116548891	0.0086685046
+/gps/hist/point	4.0977530276	0.0078112937
+/gps/hist/point	4.1838513642	0.0070383905
+/gps/hist/point	4.2699504935	0.0063403055
+/gps/hist/point	4.3560531897	0.0057047415
+/gps/hist/point	4.4370956374	0.0051570209
+/gps/hist/point	4.5181256010	0.0046811274
+/gps/hist/point	4.5991733991	0.0042242227
+/gps/hist/point	4.6802176302	0.0038164028
+/gps/hist/point	4.7612672117	0.0034418746
+/gps/hist/point	4.8423203602	0.0031004507
+/gps/hist/point	4.9233752921	0.0027912523
+/gps/hist/point	4.9993641155	0.0025295896
+/gps/hist/point	5.0753610919	0.0022862986
+/gps/hist/point	5.1564249411	0.0020522469
+/gps/hist/point	5.2374941406	0.0018389068
+/gps/hist/point	5.3185651235	0.0016467751
+/gps/hist/point	5.3945710172	0.0014840193
+/gps/hist/point	5.4655094776	0.0013468255
+/gps/hist/point	5.5364699509	0.0012134706
+/gps/hist/point	5.6074296089	0.0010936139
+/gps/hist/point	5.6783994581	0.0009822875
+/gps/hist/point	5.7493794984	0.0008793325
+/gps/hist/point	5.8152833241	0.0007950460
+/gps/hist/point	5.8812048145	0.0007146617
+/gps/hist/point	5.9471422710	0.0006390300
+/gps/hist/point	6.0080103069	0.0005758286
+/gps/hist/point	6.0688926105	0.0005164414
+/gps/hist/point	6.1297772921	0.0004628158
+/gps/hist/point	6.1855979204	0.0004172320
+/gps/hist/point	6.2363773238	0.0003755420
+/gps/hist/point	6.2871481665	0.0003389737
+/gps/hist/point	6.3379589587	0.0003019602
+/gps/hist/point	6.3837087889	0.0002703167
+/gps/hist/point	6.4244012242	0.0002428982
+/gps/hist/point	6.4651293285	0.0002157075
+/gps/hist/point	6.5058824011	0.0001899892
+/gps/hist/point	6.5398987009	0.0001678200
+/gps/hist/point	6.5682225224	0.0001469544
+/gps/hist/point	6.5968743722	0.0001290390
+/gps/hist/point	6.6133829573	0.0001145402
+# Linear interpolation between the data points is required to obtain
+# the smooth energy spectrum
+/gps/hist/inter Lin
+#
+/gps/pos/type Beam
+#
+# the incident surface is in the y-z plane
+/gps/pos/rot1 0 1 0
+/gps/pos/rot2 0 0 1
+#
+# the beam spot is centered at the origin and is
+# of 1d gaussian shape with a 1 mm central plateau
+/gps/pos/shape Circle
+/gps/pos/centre 0. 0. 0. mm
+/gps/pos/radius 1. mm
+/gps/pos/sigma_r .2 mm
+#
+# the beam is travelling along the X_axis with 5 degrees dispersion
+/gps/ang/rot1 0 0 1
+/gps/ang/rot2 0 1 0
+/gps/ang/type beam1d
+/gps/ang/sigma_r 5. deg
+#
+# the beam energy is in gaussian profile centered at 400 MeV
+/gps/ene/type Gauss
+/gps/ene/mono 400 MeV
+/gps/ene/sigma 50. MeV
+
+# beam #2
+# 2x the instensity of beam #1
+/gps/source/add 10.
+#
+# this is a electron beam
+/gps/particle e-
+/gps/pos/type Beam
+# it beam spot is of 2d gaussian profile with a 1x2 mm2 central plateau
+# it is in the x-y plane centred at the orgin
+/gps/pos/centre 0. 0. 0. mm
+/gps/pos/halfx 0.5 mm
+/gps/pos/halfy 1. mm
+/gps/pos/sigma_x 0.1 mm
+# the spread in y direction is stronger
+/gps/pos/sigma_y 0.2 mm
+#
+#the beam is travelling along -Z_axis
+/gps/ang/type beam2d
+/gps/ang/sigma_x 2. deg
+/gps/ang/sigma_y 1. deg
+# gaussian energy profile
+/gps/ene/type Gauss
+/gps/ene/mono 600 MeV
+/gps/ene/sigma 50. MeV
