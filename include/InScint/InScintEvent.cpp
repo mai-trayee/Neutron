@@ -1,4 +1,4 @@
-#include "CfInScint/Event.h"
+#include "InScint/InScintEvent.h"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -23,6 +23,10 @@ void Event::BeginOfEventAction(const G4Event*)
 	G4cout << "begin of event" << std::endl;
 
 	fAbsorbEnergy = 0.0;
+
+	const Volume* Scintillator = 	//begin of each run get scoring volume which can be updated
+		static_cast<const Volume*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+	fScoringVolume = Scintillator->GetScoringVolume();	 
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -50,3 +54,8 @@ void Event::AddFinalEnergy(G4double energy)	//called by Step
 	fFinalEnergy = energy;
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+G4LogicalVolume* Event::GetScoringVolume()
+{
+	return fScoringVolume;
+}

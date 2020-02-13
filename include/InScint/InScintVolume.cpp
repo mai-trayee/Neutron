@@ -1,4 +1,4 @@
-#include "CfInScint/Volume.h"
+#include "InScint/InScintVolume.h"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -52,7 +52,22 @@ G4VPhysicalVolume* Volume::Construct()
 	//scintillator/detector
 	//cylinder or cube, try different shapes and sizes
 	//10cm x 10cm x 10cm cube
-	G4Material* matScint = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+	G4Material* matScint;
+	switch (GetScintillatorType())
+	{
+		case Plastic:
+			G4cout << "Creaiting plastic scintillator" << std::endl;
+			matScint = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+			break;
+		case BGO:
+			G4cout << "Creaiting bismuth germanate (BGO) scintillator" << std::endl;
+			matScint = nist->FindOrBuildMaterial("G4_BGO");
+			break;
+		default:
+			matScint = NULL;
+			break;
+	}
+
 	double scint_l = GetScintillatorSize();
 
 	G4CSGSolid *solScint;
@@ -147,5 +162,15 @@ void Volume::SetScintillatorShape(Shape shape)
 Volume::Shape Volume::GetScintillatorShape()
 {
 	return fShape;
+}
+
+void Volume::SetScintillatorType(Type type)
+{
+	fType = type;
+}
+
+Volume::Type Volume::GetScintillatorType()
+{
+	return fType;
 }
 

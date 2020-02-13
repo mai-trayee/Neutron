@@ -77,7 +77,11 @@ int main(int argc, char** argv)
 
 	List.close();
 
-	std::vector<std::vector<double> > vData(vSize.size());
+	std::vector<std::vector<double> > vEner(vSize.size());
+	std::vector<std::vector<double> > vPerc(vSize.size());
+	std::vector<double> vInitial(vSize.size());
+	std::vector<double> vKinemat(vSize.size());
+	std::vector<unsigned int> vNumber(vSize.size());
 	double Range = 8.0/Bins;
 
 	for (unsigned int i = 0; i < vSize.size(); ++i)
@@ -87,41 +91,66 @@ int main(int argc, char** argv)
 
 		double Initial, Final, Absorb;
 		TBranch *b_fInitial, *b_fFinal, *b_fAbsorb;
-		Data->SetBranchStatus("*", 1);
 		Data->SetBranchAddress("Initial", &Initial, &b_fInitial);
 		Data->SetBranchAddress("Final",   &Final,   &b_fFinal);
 		Data->SetBranchAddress("Absorb",  &Absorb,  &b_fAbsorb);
+		Data->SetBranchStatus("*", 1);
 
-		vData.at(i).clear();
-		vData.at(i).resize(Bins);
-		std::vector<unsigned int> vCount(Bins);
+		vEner.at(i).clear();
+		vEner.at(i).resize(Bins);
+		vPerc.at(i).clear();
+		vPerc.at(i).resize(Bins);
 		for (unsigned int n = 0; n < Data->GetEntries(); ++n)
 		{
 			Data->GetEntry(n);
+
+			if (Final > 0)
+			{
+				vKinemat.at(i) += Final;
+				++vNumber.at(i);
+			}
+
 			for (unsigned int j = 0; j < Bins; ++j)
 			{
 				if (Initial >= j*Range && Initial < (j+1)*Range)
 				{
-					vData.at(i).at(j) += Absorb;
-					++vCount.at(j);
+					vEner.at(i).at(j) += Absorb;
+					vInitial.at(i) += Initial;
+
+					vPerc.at(i).at(j) += (Final > 0);
 				}
 			}
 		}
 
-		for (unsigned int j = 0; j < vData.at(i).size(); ++j)
-			vData.at(i).at(j) /= vCount.at(j);
+		for (unsigned int j = 0; j < Bins; ++j)
+		{
+			if (Data->GetEntries())
+				vPerc.at(i).at(j) /= double(Data->GetEntries());
+		}
 	}
 
-	for (unsigned int j = 0; j < Bins; ++j)
+	std::ofstream OutE((BaseName+"_energy.dat").c_str());
+	std::ofstream OutN((BaseName+"_number.dat").c_str());
+	for (unsigned int i = 0; i < vSize.size(); ++i)
 	{
-		ssL.clear();
-		ssL.str("");
-		ssL << BaseName << std::setfill('0') << std::setw(4) << j*Range*1000 << ".dat";
-		std::cout << "Energy bin " << j*Range << "\t in " << ssL.str() << std::endl;
+		double Avg = 0.0;
+		double Tot = 0.0;
+		OutE << vSize.at(i);
+		OutN << vSize.at(i);
+		for (unsigned int j = 0; j < Bins; ++j)
+		{
+			OutE << "\t" << vEner.at(i).at(j);
+			OutN << "\t" << vPerc.at(i).at(j);
+			Avg += vEner.at(i).at(j);
+			Tot += vPerc.at(i).at(j);
+		}
+		//OutE << "\t" << Avg/vInitial.at(i);
+		std::cout << vSize.at(i) << "\t" << vKinemat.at(i) << "\t" << vNumber.at(i) << std::endl;
+		OutE << "\t" << vKinemat.at(i) / vNumber.at(i);
+		OutN << "\t" << Tot;
 
-		std::ofstream Out(ssL.str().c_str());
-		for (unsigned int i = 0; i < vSize.size(); ++i)
-			Out << vSize.at(i) << "\t" << vData.at(i).at(j) << std::endl;
+		OutE << std::endl;
+		OutN << std::endl;
 	}
 
 	return 0;

@@ -9,13 +9,18 @@
 #include "G4UImanager.hh"
 #include "QBBC.hh"
 #include "FTFP_BERT_HP.hh"
+#include "G4OpticalPhysics.hh"
+
+#ifdef G4VIS_USE
+#include "G4VisExecutive.hh"
+#endif
 
 //user defined
-#include "InScint/InScintVolume.h"
-#include "InScint/InScintGenerator.h"
-#include "InScint/InScintRun.h"
-#include "InScint/InScintEvent.h"
-#include "InScint/InScintStep.h"
+#include "Trigger/TriggerVolume.h"
+#include "Trigger/TriggerGenerator.h"
+#include "Trigger/TriggerRun.h"
+#include "Trigger/TriggerEvent.h"
+#include "Trigger/TriggerStep.h"
 
 void Usage(char *argv0);
 int main(int argc, char** argv)
@@ -23,11 +28,6 @@ int main(int argc, char** argv)
 	const struct option longopts[] = 
 	{
 		{"macro", 	required_argument,	0, 'm'},
-		{"dimension", 	required_argument,	0, 'L'},
-		{"cube", 	no_argument,		0, 'q'},
-		{"cylinder", 	no_argument,		0, 'c'},
-		{"plastic", 	no_argument,		0, 'P'},
-		{"bgo", 	no_argument,		0, 'B'},
 		{"output", 	required_argument,	0, 'o'},
 		{"help", 	no_argument,	 	0, 'h'},
 		{0,	0, 	0,	0},
@@ -39,32 +39,14 @@ int main(int argc, char** argv)
 	
 	//Initialize variables
 	std::string outName, macFile;
-	double size = 5;	//5 cm
-	bool cube = true;	//cylinder = false
-	bool plastic = true;	//bgo      = false
 	unsigned int numEvents = 1000;
 	
-	while((iarg = getopt_long(argc,argv, "m:L:qcPBo:n:h", longopts, &index)) != -1)
+	while((iarg = getopt_long(argc,argv, "m:o:n:h", longopts, &index)) != -1)
 	{
 		switch(iarg)
 		{
 			case 'm':
 				macFile.assign(optarg);
-				break;
-			case 'L':
-				size = std::strtod(optarg, NULL);
-				break;
-			case 'q':
-				cube = true;
-				break;
-			case 'c':
-				cube = false;
-				break;
-			case 'P':
-				plastic = true;
-				break;
-			case 'B':
-				plastic = false;
 				break;
 			case 'o':
 				outName.assign(optarg);
@@ -89,7 +71,9 @@ int main(int argc, char** argv)
 
 	// set mandatory initialization classes
 	runManager->SetUserInitialization(new Volume());
-	runManager->SetUserInitialization(new FTFP_BERT_HP());	//should be good for neutrons
+	G4VModularPhysicsList *opticalFTFP = new FTFP_BERT_HP();
+	opticalFTFP->RegisterPhysics(new G4OpticalPhysics());
+	runManager->SetUserInitialization(opticalFTFP);	//should be good for neutrons
 	//runManager->SetUserInitialization(new Action(Save));
 
 	Generator * generatorAction = new Generator();
@@ -105,37 +89,24 @@ int main(int argc, char** argv)
 	// initialize Gu kernel
 	runManager->Initialize();
 
+#ifdef G4VIS_USE
+	// visualization manager
+	G4VisManager* visManager = new G4VisExecutive;
+	visManager->Initialize();
+#endif
+
 	UI->ApplyCommand("/control/execute " + macFile);
 
-	//outName = "/Output/RootFile " + outName;
-	G4String dim, shape, type;
-
-	std::stringstream sSize;
-	sSize << size;
-	sSize >> dim;
-
-	if (cube)
-		shape = "Cube";
-	else
-		shape = "Cylinder";
-
-	if (plastic)
-		type = "Plastic";
-	else
-		type = "BGO";
-
-	outName += "_" + shape + "_" + type + "_" + dim + ".root";
-
 	UI->ApplyCommand("/Output/RootFile " + outName);
-	UI->ApplyCommand("/Volume/Size " + dim + " cm");
-	UI->ApplyCommand("/Volume/Shape " + shape);
-	UI->ApplyCommand("/Volume/Type " + type);
-	UI->ApplyCommand("/Volume/Construct");
 
 	runManager->BeamOn(numEvents);
 
 	//job termination
 	delete runManager;
+#ifdef G4VIS_USE
+	delete visManager;
+#endif
+
 	return 0;
 }
 

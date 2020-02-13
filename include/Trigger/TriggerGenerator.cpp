@@ -1,4 +1,4 @@
-#include "CfInScint/Generator.h"
+#include "Trigger/TriggerGenerator.h"
 
 #include "G4LogicalVolumeStore.hh"
 #include "G4LogicalVolume.hh"
@@ -85,8 +85,11 @@ void Generator::GeneratePrimaries(G4Event* anEvent)
 	fMass     = anEvent->GetPrimaryVertex()->GetPrimary()->GetMass();
 	fEnergy   = anEvent->GetPrimaryVertex()->GetPrimary()->GetTotalEnergy();
 	fEnergyK  = fEnergy - fMass;
+	fParticle = anEvent->GetPrimaryVertex()->GetPrimary()->GetPDGcode();
 }
 
+//get particle info
+//
 G4double Generator::GetMomentum() const
 {
 	return fMomentum.dot(fMomentum);
@@ -105,4 +108,9 @@ G4double Generator::GetEnergyKin() const
 G4double Generator::GetMass() const
 {
 	return fMass;
+}
+
+G4int Generator::GetParticle() const
+{
+	return fParticle;
 }

@@ -1,4 +1,4 @@
-#include "CfInScint/MsgOutput.h"
+#include "Trigger/TriggerMsgOutput.h"
 
 MsgOutput::MsgOutput(Run* Act) :
 	Action(Act)	//run actio

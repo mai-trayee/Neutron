@@ -1,4 +1,4 @@
-#include "CfInScint/Run.h"
+#include "InScint/InScintRun.h"
 
 Run::Run() : 
 	G4UserRunAction()
