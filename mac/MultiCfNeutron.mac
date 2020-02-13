@@ -1,0 +1,386 @@
+/run/verbose 1
+/event/verbose 1
+/tracking/verbose 1
+
+# two beams in a generator
+#
+# beam #1
+#
+#/gps/source/intensity 1.
+/gps/particle neutron
+#
+/gps/pos/type Point
+/gps/pos/centre 0.0 0.0 0.0 mm
+#
+/gps/ang/type iso
+#
+/gps/ene/type Arb
+/gps/hist/type arb
+#
+# The Cf-252 neutron energy spectrum was taken from
+# Figure 2 of A.B. Smith and  P.R. Fields, 
+# Phys Rev 108 (1957) 411.
+#
+#                Energy (MeV)  Rel. Yield
+#
+/gps/hist/point	1.0219691886	27.4540938741
+/gps/hist/point	0.0585381370	31.0287601426
+/gps/hist/point	0.0909036700	33.0407624686
+/gps/hist/point	0.1428643387	35.9594868157
+/gps/hist/point	0.1967755439	40.3281727441
+/gps/hist/point	0.2705263304	45.7652615247
+/gps/hist/point	0.3465559866	50.7101879626
+/gps/hist/point	0.4223266648	53.3725207502
+/gps/hist/point	0.5179848370	56.0208491494
+/gps/hist/point	0.6365819089	58.3103704173
+/gps/hist/point	0.7916643626	59.5950078248
+/gps/hist/point	0.9495743849	59.7664753926
+/gps/hist/point	1.1467651576	58.2588106565
+/gps/hist/point	1.3205482757	56.1372112376
+/gps/hist/point	1.5102537373	53.4169923843
+/gps/hist/point	1.6415044378	51.2656343579
+/gps/hist/point	1.8189191390	48.4886164154
+/gps/hist/point	1.9996074222	45.7423410500
+/gps/hist/point	2.1954758060	42.3235029502
+/gps/hist/point	2.2916489145	40.6882015630
+/gps/hist/point	2.4652939321	37.6003151620
+/gps/hist/point	2.5527647379	36.2110463310
+/gps/hist/point	2.7374552289	33.5673675513
+/gps/hist/point	2.8806273994	31.7448779640
+/gps/hist/point	2.9969869099	29.9206145792
+/gps/hist/point	3.1114735262	28.1389089470
+/gps/hist/point	3.2426952635	26.5707491627
+/gps/hist/point	3.3494239212	25.1732784192
+/gps/hist/point	3.4808509027	23.7100938537
+/gps/hist/point	3.6142743455	22.2994852308
+/gps/hist/point	3.7199336700	20.9838315880
+/gps/hist/point	3.8335195365	19.7555865962
+/gps/hist/point	3.9530644669	18.5781147685
+/gps/hist/point	4.0726146381	17.4610740715
+/gps/hist/point	4.1862063277	16.4288347146
+/gps/hist/point	4.2863318541	15.5205533241
+/gps/hist/point	4.4053892032	14.5693518170
+/gps/hist/point	4.5091056606	13.7286274972
+/gps/hist/point	4.6227634423	12.8264363498
+/gps/hist/point	4.7423214747	12.0451364883
+/gps/hist/point	4.8559437356	11.2962303260
+/gps/hist/point	4.9576142402	10.6560830139
+/gps/hist/point	5.0473723570	10.0689229693
+/gps/hist/point	5.1430805327	9.5124309758
+/gps/hist/point	5.2507291719	8.9449946912
+/gps/hist/point	5.3524386185	8.4031668442
+/gps/hist/point	5.4541502487	7.8923236471
+/gps/hist/point	5.5635484954	7.4271770722
+/gps/hist/point	5.6495491144	6.9919058089
+/gps/hist/point	5.7797354992	6.4999039583
+/gps/hist/point	5.8550200911	6.1597153131
+/gps/hist/point	5.9507463079	5.8081081273
+/gps/hist/point	6.0464790758	5.4727517280
+/gps/hist/point	6.1422413230	5.1405940369
+/gps/hist/point	6.2240048579	4.8628031735
+/gps/hist/point	6.3277949619	4.5463959218
+/gps/hist/point	6.3937925790	4.3713749698
+/gps/hist/point	6.4910005711	4.1162987162
+/gps/hist/point	6.6030992306	3.8023571394
+/gps/hist/point	6.6863490608	3.6149729706
+/gps/hist/point	6.7892538614	3.3843811121
+/gps/hist/point	6.8664772193	3.1900866105
+/gps/hist/point	7.0142439384	2.8969493044
+/gps/hist/point	7.1537738701	2.6512765868
+/gps/hist/point	7.2625326120	2.4759033840
+/gps/hist/point	7.3632296285	2.3088765884
+/gps/hist/point	7.4589820493	2.1710147744
+/gps/hist/point	7.5547573986	2.0364058858
+/gps/hist/point	7.6505360233	1.9094769010
+/gps/hist/point	7.7463080970	1.7917089904
+/gps/hist/point	7.8420736197	1.6823778236
+/gps/hist/point	7.9318861720	1.5804879401
+/gps/hist/point	8.0216917054	1.4858791157
+/gps/hist/point	8.1415716575	1.3712960816
+#
+# Linear interpolation between the data points is required to obtain
+# the smooth energy spectrum
+/gps/hist/inter Lin
+#
+
+/Volume/Shape Cylinder
+
+#run 2cm
+#/Volume/Size 1 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_01.root
+#
+#/run/beamOn 100000
+
+#run 2cm
+/Volume/Size 2 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_02.root
+
+/run/beamOn 100000
+
+#run 3cm
+#/Volume/Size 3 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_03.root
+#
+#/run/beamOn 100000
+
+#run 4cm
+/Volume/Size 4 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_04.root
+
+/run/beamOn 100000
+
+#run 5cm
+#/Volume/Size 5 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_05.root
+#
+#/run/beamOn 100000
+
+#run 6cm
+/Volume/Size 6 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_06.root
+
+/run/beamOn 100000
+
+#run 7cm
+#/Volume/Size 7 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_07.root
+#
+#/run/beamOn 100000
+
+#run 8cm
+/Volume/Size 8 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_08.root
+
+/run/beamOn 100000
+
+#run 9cm
+#/Volume/Size 9 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_09.root
+#
+#/run/beamOn 100000
+
+#run 10cm
+/Volume/Size 10 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_10.root
+
+/run/beamOn 100000
+
+#run 11cm
+#/Volume/Size 11 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_11.root
+#
+#/run/beamOn 100000
+
+#run 12cm
+/Volume/Size 12 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_12.root
+
+/run/beamOn 100000
+
+#run 13cm
+#/Volume/Size 13 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_13.root
+#
+#/run/beamOn 100000
+
+#run 14cm
+/Volume/Size 14 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_14.root
+
+/run/beamOn 100000
+
+#run 15cm
+#/Volume/Size 15 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_15.root
+#
+#/run/beamOn 100000
+
+#run 16cm
+/Volume/Size 16 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_16.root
+
+/run/beamOn 100000
+
+#run 17cm
+#/Volume/Size 17 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_17.root
+#
+#/run/beamOn 100000
+
+#run 18cm
+/Volume/Size 18 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_18.root
+
+/run/beamOn 100000
+
+#run 19cm
+#/Volume/Size 19 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_19.root
+#
+#/run/beamOn 100000
+
+#run 20cm
+/Volume/Size 20 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_20.root
+
+/run/beamOn 100000
+
+#run 21cm
+#/Volume/Size 21 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_21.root
+#
+#/run/beamOn 100000
+
+#run 22cm
+/Volume/Size 22 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_22.root
+
+/run/beamOn 100000
+
+#run 23cm
+#/Volume/Size 23 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_23.root
+#
+#/run/beamOn 100000
+
+#run 24cm
+/Volume/Size 24 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_24.root
+
+/run/beamOn 100000
+
+#run 25cm
+#/Volume/Size 25 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_25.root
+#
+#/run/beamOn 100000
+
+#run 26cm
+/Volume/Size 26 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_26.root
+
+/run/beamOn 100000
+
+#run 27cm
+#/Volume/Size 27 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_27.root
+#
+#/run/beamOn 100000
+
+#run 28cm
+/Volume/Size 28 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_28.root
+
+/run/beamOn 100000
+
+#run 29cm
+#/Volume/Size 29 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_29.root
+#
+#/run/beamOn 100000
+
+#run 30cm
+/Volume/Size 30 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_30.root
+
+/run/beamOn 100000
+
+#run 31cm
+#/Volume/Size 31 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_31.root
+#
+#/run/beamOn 100000
+
+#run 32cm
+/Volume/Size 32 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_32.root
+
+/run/beamOn 100000
+
+#run 33cm
+#/Volume/Size 33 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_33.root
+#
+#/run/beamOn 100000
+
+#run 34cm
+/Volume/Size 34 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_34.root
+
+/run/beamOn 100000
+
+#run 35cm
+#/Volume/Size 35 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_35.root
+#
+#/run/beamOn 100000
+
+#run 36cm
+/Volume/Size 36 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_36.root
+
+/run/beamOn 100000
+
+#run 37cm
+#/Volume/Size 37 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_37.root
+#
+#/run/beamOn 100000
+
+#run 38cm
+/Volume/Size 38 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_38.root
+
+/run/beamOn 100000
+
+#run 39cm
+#/Volume/Size 39 cm
+#/Volume/Construct
+#/Output/RootFile data/Neutron_39.root
+#
+#/run/beamOn 100000
+
+#run 40cm
+/Volume/Size 40 cm
+/Volume/Construct
+/Output/RootFile data/Neutron_40.root
+
+/run/beamOn 100000

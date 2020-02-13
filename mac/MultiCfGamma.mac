@@ -1,6 +1,6 @@
-/run/verbose 0
-/event/verbose 0
-/tracking/verbose 0
+/run/verbose 1
+/event/verbose 1
+/tracking/verbose 1
 
 # two beams in a generator
 #
@@ -10,7 +10,7 @@
 /gps/particle gamma
 #
 /gps/pos/type Point
-/gps/pos/centre 0.0 0.0 7.0 mm
+/gps/pos/centre 0.0 0.0 0.0 mm
 #
 /gps/ang/type iso
 #
@@ -122,3 +122,286 @@
 # Linear interpolation between the data points is required to obtain
 # the smooth energy spectrum
 /gps/hist/inter Lin
+#
+
+/Volume/Shape Cylinder
+
+#run 1cm
+/Volume/Size 1 cm
+/Volume/Construct
+/Output/RootFile data/Photon_01.root
+
+/run/beamOn 100000
+
+#run 2cm
+/Volume/Size 2 cm
+/Volume/Construct
+/Output/RootFile data/Photon_02.root
+
+/run/beamOn 100000
+
+#run 3cm
+/Volume/Size 3 cm
+/Volume/Construct
+/Output/RootFile data/Photon_03.root
+
+/run/beamOn 100000
+
+#run 4cm
+/Volume/Size 4 cm
+/Volume/Construct
+/Output/RootFile data/Photon_04.root
+
+/run/beamOn 100000
+
+#run 5cm
+/Volume/Size 5 cm
+/Volume/Construct
+/Output/RootFile data/Photon_05.root
+
+/run/beamOn 100000
+
+#run 6cm
+/Volume/Size 6 cm
+/Volume/Construct
+/Output/RootFile data/Photon_06.root
+
+/run/beamOn 100000
+
+#run 7cm
+/Volume/Size 7 cm
+/Volume/Construct
+/Output/RootFile data/Photon_07.root
+
+/run/beamOn 100000
+
+#run 8cm
+/Volume/Size 8 cm
+/Volume/Construct
+/Output/RootFile data/Photon_08.root
+
+/run/beamOn 100000
+
+#run 9cm
+/Volume/Size 9 cm
+/Volume/Construct
+/Output/RootFile data/Photon_09.root
+
+/run/beamOn 100000
+
+#run 10cm
+/Volume/Size 10 cm
+/Volume/Construct
+/Output/RootFile data/Photon_10.root
+
+/run/beamOn 100000
+
+#run 11cm
+/Volume/Size 11 cm
+/Volume/Construct
+/Output/RootFile data/Photon_11.root
+
+/run/beamOn 100000
+
+#run 12cm
+/Volume/Size 12 cm
+/Volume/Construct
+/Output/RootFile data/Photon_12.root
+
+/run/beamOn 100000
+
+#run 13cm
+/Volume/Size 13 cm
+/Volume/Construct
+/Output/RootFile data/Photon_13.root
+
+/run/beamOn 100000
+
+#run 14cm
+/Volume/Size 14 cm
+/Volume/Construct
+/Output/RootFile data/Photon_14.root
+
+/run/beamOn 100000
+
+#run 15cm
+/Volume/Size 15 cm
+/Volume/Construct
+/Output/RootFile data/Photon_15.root
+
+/run/beamOn 100000
+
+#run 16cm
+/Volume/Size 16 cm
+/Volume/Construct
+/Output/RootFile data/Photon_16.root
+
+/run/beamOn 100000
+
+#run 17cm
+/Volume/Size 17 cm
+/Volume/Construct
+/Output/RootFile data/Photon_17.root
+
+/run/beamOn 100000
+
+#run 18cm
+/Volume/Size 18 cm
+/Volume/Construct
+/Output/RootFile data/Photon_18.root
+
+/run/beamOn 100000
+
+#run 19cm
+/Volume/Size 19 cm
+/Volume/Construct
+/Output/RootFile data/Photon_19.root
+
+/run/beamOn 100000
+
+#run 20cm
+/Volume/Size 20 cm
+/Volume/Construct
+/Output/RootFile data/Photon_20.root
+
+/run/beamOn 100000
+
+#run 21cm
+/Volume/Size 21 cm
+/Volume/Construct
+/Output/RootFile data/Photon_21.root
+
+/run/beamOn 100000
+
+#run 22cm
+/Volume/Size 22 cm
+/Volume/Construct
+/Output/RootFile data/Photon_22.root
+
+/run/beamOn 100000
+
+#run 23cm
+/Volume/Size 23 cm
+/Volume/Construct
+/Output/RootFile data/Photon_23.root
+
+/run/beamOn 100000
+
+#run 24cm
+/Volume/Size 24 cm
+/Volume/Construct
+/Output/RootFile data/Photon_24.root
+
+/run/beamOn 100000
+
+#run 25cm
+/Volume/Size 25 cm
+/Volume/Construct
+/Output/RootFile data/Photon_25.root
+
+/run/beamOn 100000
+
+#run 26cm
+/Volume/Size 26 cm
+/Volume/Construct
+/Output/RootFile data/Photon_26.root
+
+/run/beamOn 100000
+
+#run 27cm
+/Volume/Size 27 cm
+/Volume/Construct
+/Output/RootFile data/Photon_27.root
+
+/run/beamOn 100000
+
+#run 28cm
+/Volume/Size 28 cm
+/Volume/Construct
+/Output/RootFile data/Photon_28.root
+
+/run/beamOn 100000
+
+#run 29cm
+/Volume/Size 29 cm
+/Volume/Construct
+/Output/RootFile data/Photon_29.root
+
+/run/beamOn 100000
+
+#run 30cm
+/Volume/Size 30 cm
+/Volume/Construct
+/Output/RootFile data/Photon_30.root
+
+/run/beamOn 100000
+
+#run 31cm
+/Volume/Size 31 cm
+/Volume/Construct
+/Output/RootFile data/Photon_31.root
+
+/run/beamOn 100000
+
+#run 32cm
+/Volume/Size 32 cm
+/Volume/Construct
+/Output/RootFile data/Photon_32.root
+
+/run/beamOn 100000
+
+#run 33cm
+/Volume/Size 33 cm
+/Volume/Construct
+/Output/RootFile data/Photon_33.root
+
+/run/beamOn 100000
+
+#run 34cm
+/Volume/Size 34 cm
+/Volume/Construct
+/Output/RootFile data/Photon_34.root
+
+/run/beamOn 100000
+
+#run 35cm
+/Volume/Size 35 cm
+/Volume/Construct
+/Output/RootFile data/Photon_35.root
+
+/run/beamOn 100000
+
+#run 36cm
+/Volume/Size 36 cm
+/Volume/Construct
+/Output/RootFile data/Photon_36.root
+
+/run/beamOn 100000
+
+#run 37cm
+/Volume/Size 37 cm
+/Volume/Construct
+/Output/RootFile data/Photon_37.root
+
+/run/beamOn 100000
+
+#run 38cm
+/Volume/Size 38 cm
+/Volume/Construct
+/Output/RootFile data/Photon_38.root
+
+/run/beamOn 100000
+
+#run 39cm
+/Volume/Size 39 cm
+/Volume/Construct
+/Output/RootFile data/Photon_39.root
+
+/run/beamOn 100000
+
+#run 40cm
+/Volume/Size 40 cm
+/Volume/Construct
+/Output/RootFile data/Photon_40.root
+
+/run/beamOn 100000
